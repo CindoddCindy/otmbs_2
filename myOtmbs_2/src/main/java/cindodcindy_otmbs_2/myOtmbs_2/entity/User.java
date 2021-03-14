@@ -10,16 +10,46 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String firstName;
+
     private String lastName;
+
     private String mobile;
+
     @Column(unique = true)
     private String email;
+
     @ManyToOne
     @JsonIgnore
     private Role role;
+
+    @ManyToOne
+    @JsonIgnore
+    private Admin admin;
+
+    @Transient
+    private String adminName;
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    public String getAdminName() {
+        return getAdmin().getName();
+    }
+
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
+    }
+
     @Transient
     private String roleName;
+
     public String getRoleName() {
         return getRole().getName();
     }
