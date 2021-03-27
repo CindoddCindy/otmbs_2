@@ -24,28 +24,9 @@ public class User {
     @JsonIgnore
     private Role role;
 
-    @ManyToOne
-    @JsonIgnore
-    private Admin admin;
 
-    @Transient
-    private String adminName;
 
-    public Admin getAdmin() {
-        return admin;
-    }
 
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
-
-    public String getAdminName() {
-        return getAdmin().getName();
-    }
-
-    public void setAdminName(String adminName) {
-        this.adminName = adminName;
-    }
 
     @Transient
     private String roleName;

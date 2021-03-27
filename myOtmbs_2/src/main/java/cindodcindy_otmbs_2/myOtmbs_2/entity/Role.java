@@ -20,6 +20,12 @@ public class Role {
     @JoinColumn(name = "role_id")
     private List<User> users;
 
+    @OneToMany(targetEntity = User.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "admin_id")
+    private List<Admin> admin;
+
+
+
 
     public Long getId() {
         return this.id;

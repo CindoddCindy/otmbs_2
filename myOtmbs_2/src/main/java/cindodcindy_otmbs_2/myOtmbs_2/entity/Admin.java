@@ -1,5 +1,7 @@
 package cindodcindy_otmbs_2.myOtmbs_2.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,9 +16,11 @@ public class Admin {
     private String description;
 
 
-    @OneToMany(targetEntity = User.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "admin_id")
-    private List<User> users;
+
+    @ManyToOne
+    @JsonIgnore
+    private Role role;
+
 
 
     public Long getId() {
@@ -37,10 +41,9 @@ public class Admin {
     public void setDescription(String description) {
         this.description = description;
     }
-    public List<User> getUsers() {
-        return users;
-    }
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+
+
+
+
+
 }
